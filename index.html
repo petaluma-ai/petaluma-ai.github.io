@@ -155,14 +155,52 @@
             background: var(--warm-white);
             border-radius: 12px;
             border-left: 3px solid var(--sage);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .credential-logo {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .credential-logo.yale { background: #00356b; }
+        .credential-logo.penn { background: #011f5b; }
+        .credential-logo.amsterdam { background: #c00a35; }
+        .credential-logo.uchicago { background: #800000; }
+
+        .credential-content {
+            flex: 1;
         }
 
         .credential-card h3 {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--sage-dark);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .credential-degree {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .credential-years {
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
 
         .credential-card p {
@@ -351,33 +389,39 @@
 
             <div class="credentials">
                 <div class="credential-card">
-                    <h3>Yale University</h3>
-                    <p>
-                        <!-- TODO: Add specific degree -->
-                        Bachelor of Arts
-                    </p>
+                    <div class="credential-logo yale">Y</div>
+                    <div class="credential-content">
+                        <h3>Yale University</h3>
+                        <p class="credential-degree">Master of Business Administration</p>
+                        <p class="credential-years">2017 – 2019</p>
+                    </div>
                 </div>
 
                 <div class="credential-card">
-                    <h3>University of Pennsylvania</h3>
-                    <p>
-                        <!-- TODO: Add specific degree -->
-                        Graduate Studies
-                    </p>
+                    <div class="credential-logo penn">P</div>
+                    <div class="credential-content">
+                        <h3>University of Pennsylvania</h3>
+                        <p class="credential-degree">MS, Computer & Information Technology</p>
+                        <p class="credential-years">2020 – 2022</p>
+                    </div>
                 </div>
 
                 <div class="credential-card">
-                    <h3>University of Amsterdam</h3>
-                    <p>
-                        Master of Logic
-                    </p>
+                    <div class="credential-logo amsterdam">A</div>
+                    <div class="credential-content">
+                        <h3>University of Amsterdam</h3>
+                        <p class="credential-degree">MS, Logic</p>
+                        <p class="credential-years">2012 – 2014</p>
+                    </div>
                 </div>
 
                 <div class="credential-card">
-                    <h3>University of Chicago</h3>
-                    <p>
-                        Philosophy
-                    </p>
+                    <div class="credential-logo uchicago">C</div>
+                    <div class="credential-content">
+                        <h3>University of Chicago</h3>
+                        <p class="credential-degree">BA, Philosophy</p>
+                        <p class="credential-years">2007 – 2011</p>
+                    </div>
                 </div>
             </div>
         </div>
