@@ -155,63 +155,27 @@
             background: var(--warm-white);
             border-radius: 12px;
             border-left: 3px solid var(--sage);
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
-        }
-
-        .credential-logo {
-            width: 56px;
-            height: 56px;
-            min-width: 56px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .credential-logo.yale { background: #00356b; }
-        .credential-logo.penn { background: #011f5b; }
-        .credential-logo.amsterdam { background: #c00a35; }
-        .credential-logo.uchicago { background: #800000; }
-
-        .credential-content {
-            flex: 1;
         }
 
         .credential-card h3 {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--sage-dark);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
-        .credential-degree {
+        .credential-card .degree {
             font-size: 1rem;
             color: var(--text);
             font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .credential-years {
-            font-size: 0.85rem;
-            color: var(--text-light);
+            margin-bottom: 0.5rem;
         }
 
         .credential-card p {
             font-size: 0.95rem;
             color: var(--text-light);
             line-height: 1.6;
-        }
-
-        .credential-card .company {
-            font-weight: 500;
-            color: var(--text);
         }
 
         /* Impact Statement */
@@ -364,10 +328,10 @@
     <section class="hero">
         <img src="logo.png" alt="Petaluma.ai — The Art and Science of AI" class="logo">
         <p class="hero-tagline">
-            AI consulting for small businesses.
-        </p>
-        <p class="hero-sub" style="font-size: 1.3rem; color: var(--sage-dark); max-width: 500px; margin-bottom: 3rem; animation: fadeIn 1.2s ease-out 0.4s both; font-weight: 500;">
             Skip the hype. Get results.
+        </p>
+        <p class="hero-sub" style="font-size: 1.1rem; color: var(--text-light); max-width: 500px; margin-bottom: 3rem; animation: fadeIn 1.2s ease-out 0.4s both;">
+            AI consulting for small and medium businesses — focused on outcomes, not experiments.
         </p>
         <a href="#founder" class="scroll-indicator">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -389,39 +353,27 @@
 
             <div class="credentials">
                 <div class="credential-card">
-                    <div class="credential-logo yale">Y</div>
-                    <div class="credential-content">
-                        <h3>Yale University</h3>
-                        <p class="credential-degree">Master of Business Administration</p>
-                        <p class="credential-years">2017 – 2019</p>
-                    </div>
+                    <h3>Yale University</h3>
+                    <p class="degree">MBA</p>
+                    <p>Business strategy meets technology — understanding how AI creates real value for organizations.</p>
                 </div>
 
                 <div class="credential-card">
-                    <div class="credential-logo penn">P</div>
-                    <div class="credential-content">
-                        <h3>University of Pennsylvania</h3>
-                        <p class="credential-degree">MS, Computer & Information Technology</p>
-                        <p class="credential-years">2020 – 2022</p>
-                    </div>
+                    <h3>University of Pennsylvania</h3>
+                    <p class="degree">MS, Computer & Information Technology</p>
+                    <p>The technical foundation — algorithms, systems, and the engineering behind modern AI.</p>
                 </div>
 
                 <div class="credential-card">
-                    <div class="credential-logo amsterdam">A</div>
-                    <div class="credential-content">
-                        <h3>University of Amsterdam</h3>
-                        <p class="credential-degree">MS, Logic</p>
-                        <p class="credential-years">2012 – 2014</p>
-                    </div>
+                    <h3>University of Amsterdam</h3>
+                    <p class="degree">MS, Logic</p>
+                    <p>The mathematics of reasoning — formal logic is the bedrock of how AI systems think and decide.</p>
                 </div>
 
                 <div class="credential-card">
-                    <div class="credential-logo uchicago">C</div>
-                    <div class="credential-content">
-                        <h3>University of Chicago</h3>
-                        <p class="credential-degree">BA, Philosophy</p>
-                        <p class="credential-years">2007 – 2011</p>
-                    </div>
+                    <h3>University of Chicago</h3>
+                    <p class="degree">BA, Philosophy</p>
+                    <p>The art of clear thinking — philosophy trains you to ask the right questions before building solutions.</p>
                 </div>
             </div>
         </div>
