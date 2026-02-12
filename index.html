@@ -153,7 +153,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 4rem;
+            padding: 5rem 2rem 3rem;
             text-align: center;
             position: relative;
         }
@@ -307,9 +307,6 @@
             border-radius: 12px;
             border: 1px solid rgba(107, 123, 107, 0.08);
             transition: all 0.3s ease;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
         }
 
         .service-card:hover {
@@ -318,10 +315,17 @@
             border-color: rgba(107, 123, 107, 0.15);
         }
 
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
         .service-icon {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
             background: var(--warm-white);
             border-radius: 10px;
             display: flex;
@@ -340,7 +344,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
         }
 
         .service-card p {
@@ -1036,33 +1040,39 @@
             <h2 class="section-title reveal">AI that works in your world.</h2>
             <div class="services-grid reveal-stagger">
                 <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                        </svg>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                        </div>
+                        <h3>AI Chat</h3>
                     </div>
-                    <h3>AI Chat</h3>
                     <p>Ask questions, get answers — from your own data, documents, and systems. With citations, audit trails, and "show your work."</p>
                     <span class="use-cases">"What changed this week?" · "Which location is off plan?" · "Summarize this patient's history."</span>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3>AI Workflows</h3>
                     </div>
-                    <h3>AI Workflows</h3>
                     <p>Turn recurring manual work into reliable, automated workflows. Reports, summaries, follow-ups — generated from your data, in your format, on your schedule.</p>
                     <span class="use-cases">Weekly executive updates · Discharge summaries · Insurance packets · Re-engagement campaigns</span>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                        </svg>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                            </svg>
+                        </div>
+                        <h3>AI Agents</h3>
                     </div>
-                    <h3>AI Agents</h3>
                     <p>AI that takes a goal, performs the steps, and hands off to humans at the right points. Not a chatbot — a system that actually does the work.</p>
                     <span class="use-cases">Data analysis · Approval routing · Exception handling · Triage and escalation</span>
                 </div>
@@ -1084,12 +1094,12 @@
                 <div class="process-step reveal">
                     <div class="step-number">2</div>
                     <h3>Build &amp; Deploy</h3>
-                    <p>We design AI skills — reusable playbooks that encode your business procedures in a language AI understands. We integrate with your existing systems, validate rigorously, and deploy to production. Typical timeline: 4–6 weeks.</p>
+                    <p>We design your AI, integrate with your existing systems, validate rigorously, and deploy to production. Typical timeline: 4–6 weeks.</p>
                 </div>
                 <div class="process-step reveal">
                     <div class="step-number">3</div>
                     <h3>Monitor &amp; Evolve</h3>
-                    <p>Once live, we don't disappear. We monitor performance, handle updates, refine the system, catch drift, and make improvements. Your AI gets better over time, not worse.</p>
+                    <p>Once live, we don't disappear. Monitoring, maintenance, updates, and AI refinement. Your AI gets better over time, not worse.</p>
                 </div>
             </div>
         </div>
@@ -1104,27 +1114,27 @@
             <div class="diff-grid reveal-stagger">
                 <div class="diff-card reveal">
                     <h3>Outcomes over demos.</h3>
-                    <p>We show value quickly — a working demo on your real data before we build any infrastructure. If it doesn't prove impact on your actual workflows, we don't move forward. No experiments on your dime.</p>
+                    <p>A working demo on your real data before we build anything. No experiments on your dime.</p>
                 </div>
                 <div class="diff-card reveal">
                     <h3>Reliability is the product.</h3>
-                    <p>We design guardrails in from the start — safety rails, audit trails, and human escalation are part of the system, not afterthoughts. AI that works once is a demo. AI that works every time is what we deliver.</p>
+                    <p>AI that works once is a demo. AI that works every time is what we deliver.</p>
                 </div>
                 <div class="diff-card reveal">
                     <h3>Your data stays yours.</h3>
-                    <p>We don't want your data. We build the pipes; you own the water. Data flows through but never stays on our systems. Zero-retention. Zero risk.</p>
+                    <p>We build the pipes; you own the water. Zero-retention. Zero risk.</p>
                 </div>
                 <div class="diff-card reveal">
                     <h3>You work with the founders.</h3>
-                    <p>No junior analysts. No bloated timelines. No hand-offs to people you've never met. When you hire Petaluma AI, you work directly with the people who designed the system.</p>
+                    <p>No junior analysts. No hand-offs. You work directly with the people who designed the system.</p>
                 </div>
                 <div class="diff-card reveal">
                     <h3>We meet you where you are.</h3>
-                    <p>We don't force you onto a new platform. We deploy AI into the tools your team already uses — Slack, email, WhatsApp, Teams. The best interface is the one your team already has open.</p>
+                    <p>We deploy into the tools your team already uses — Slack, email, WhatsApp, Teams.</p>
                 </div>
                 <div class="diff-card reveal">
                     <h3>We're practitioners, not just advisors.</h3>
-                    <p>We use AI to run our own operations — every day. We don't recommend things we haven't built ourselves. That's the difference between advice and experience.</p>
+                    <p>We use AI to run our own operations. That's the difference between advice and experience.</p>
                 </div>
             </div>
         </div>
