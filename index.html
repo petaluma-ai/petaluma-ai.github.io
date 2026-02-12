@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petaluma.ai — The Art and Science of AI</title>
+    <title>Petaluma AI — Close the Execution Gap</title>
+    <meta name="description" content="Petaluma AI helps mid-market businesses turn AI potential into real business results. Production-grade AI systems, deployed fast, built to last.">
+    <meta property="og:title" content="Petaluma AI — Close the Execution Gap">
+    <meta property="og:description" content="You don't have an AI problem. You have an execution problem. We close the gap between 'AI is cool' and 'AI is saving us money.'">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://petaluma.ai">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --sage: #6B7B6B;
             --sage-light: #8A9A8A;
+            --sage-lighter: #B5C4B5;
             --sage-dark: #4A5A4A;
+            --sage-darker: #3A4A3A;
             --cream: #FAFAF8;
             --warm-white: #F5F5F2;
+            --warm-gray: #EDEDEA;
             --text: #2C3E2C;
             --text-light: #5A6B5A;
+            --text-lighter: #7A8B7A;
+            --white: #FFFFFF;
+            --accent: #4A6741;
         }
 
         * {
@@ -26,276 +37,832 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--cream);
             color: var(--text);
             line-height: 1.7;
             font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Hero Section */
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(107, 123, 107, 0.08);
+            padding: 0.75rem 2rem;
+        }
+
+        .nav-logo {
+            height: 40px;
+            transition: height 0.3s ease;
+        }
+
+        nav.scrolled .nav-logo {
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--sage-dark);
+            color: var(--white) !important;
+            border-radius: 6px;
+            font-weight: 500 !important;
+            font-size: 0.8125rem !important;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--text);
+            color: var(--white) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 20px;
+            height: 1.5px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            padding: 8rem 2rem 6rem;
             text-align: center;
-            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+            position: relative;
         }
 
-        .logo {
-            max-width: 320px;
+        .hero-logo {
+            max-width: 200px;
             width: 100%;
-            margin-bottom: 3rem;
-            animation: fadeIn 1.2s ease-out;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.2s forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
+        .hero h1 {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            font-weight: 400;
-            font-style: italic;
-            color: var(--sage);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            color: var(--text);
+            max-width: 800px;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-light);
             max-width: 600px;
-            margin-bottom: 3rem;
-            animation: fadeIn 1.2s ease-out 0.3s both;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.75;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.6s forwards;
         }
 
-        .scroll-indicator {
-            animation: fadeIn 1.2s ease-out 0.6s both, bounce 2s infinite 2s;
-            cursor: pointer;
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.8s forwards;
         }
 
-        .scroll-indicator svg {
-            width: 32px;
-            height: 32px;
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--sage-dark);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 90, 74, 0.15);
+        }
+
+        .hero-note {
+            font-size: 0.8125rem;
+            color: var(--text-lighter);
+            font-weight: 400;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 1.2s forwards, float 3s ease-in-out 2s infinite;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
             stroke: var(--sage-light);
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(10px); }
-            60% { transform: translateY(5px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-            max-width: 900px;
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ============================================
+           SECTION BASICS
+           ============================================ */
+        .section {
+            padding: 7rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1080px;
             margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 500;
-            color: var(--sage-dark);
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 4.5vw, 3.25rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* ============================================
+           PROBLEM / INTRO BAND
+           ============================================ */
+        .problem {
+            background: var(--sage-darker);
+            color: var(--white);
+            padding: 5.5rem 2rem;
             text-align: center;
         }
 
-        /* Founder Section */
-        .founder {
-            background: white;
-            padding: 6rem 2rem;
-        }
-
-        .founder-content {
-            max-width: 900px;
+        .problem-inner {
+            max-width: 760px;
             margin: 0 auto;
         }
 
-        .founder-intro {
-            font-size: 1.25rem;
-            text-align: center;
+        .problem-quote {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .problem-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+
+        /* ============================================
+           SERVICES GRID
+           ============================================ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid rgba(107, 123, 107, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(44, 62, 44, 0.06);
+            border-color: rgba(107, 123, 107, 0.15);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--warm-white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--sage-dark);
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
             color: var(--text-light);
-            margin-bottom: 3rem;
-            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           HOW WE WORK (PROCESS)
+           ============================================ */
+        .process {
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-step {
+            padding: 2.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 3.5rem;
+            right: 0;
+            width: 1px;
+            height: 40px;
+            background: var(--sage-lighter);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--sage-dark);
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .process-step h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            max-width: 320px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .founder-name {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 600;
-            color: var(--text);
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .founder-title {
-            font-size: 1.1rem;
-            color: var(--sage);
-            text-align: center;
-            font-weight: 400;
-            margin-bottom: 3rem;
-            letter-spacing: 0.05em;
-        }
-
-        .credentials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .credential-card {
-            padding: 2rem;
-            background: var(--warm-white);
-            border-radius: 12px;
-            border-left: 3px solid var(--sage);
-        }
-
-        .credential-card h3 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.4rem;
+        .step-price {
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--sage-dark);
+        }
+
+        .step-price-note {
+            font-size: 0.8125rem;
+            color: var(--text-lighter);
+            margin-top: 0.25rem;
+        }
+
+        .step-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #E8F5E3;
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
 
-        .credential-card .degree {
+        /* ============================================
+           DIFFERENTIATORS
+           ============================================ */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .diff-card {
+            padding: 2.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(107, 123, 107, 0.08);
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .diff-card:hover {
+            border-color: rgba(107, 123, 107, 0.18);
+            box-shadow: 0 4px 20px rgba(44, 62, 44, 0.04);
+        }
+
+        .diff-card h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .diff-card p {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .diff-card .quote-line {
+            display: block;
+            margin-top: 0.75rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--sage-dark);
+        }
+
+        /* ============================================
+           PRICING
+           ============================================ */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            padding: 2.5rem 2rem;
+            background: var(--cream);
+            border-radius: 12px;
+            border: 1px solid rgba(107, 123, 107, 0.06);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: var(--sage-darker);
+            color: var(--white);
+            border: none;
+            transform: scale(1.03);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(44, 62, 44, 0.08);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+
+        .pricing-phase {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.75rem;
+        }
+
+        .pricing-card.featured .pricing-phase {
+            color: var(--sage-lighter);
+        }
+
+        .pricing-amount {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-card.featured .pricing-amount {
+            color: var(--white);
+        }
+
+        .pricing-period {
+            font-size: 0.875rem;
+            color: var(--text-lighter);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured .pricing-period {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .pricing-desc {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        .pricing-card.featured .pricing-desc {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            background: #E8F5E3;
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-footer {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .pricing-footer p {
             font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.75;
+        }
+
+        .pricing-footer strong {
             color: var(--text);
             font-weight: 500;
-            margin-bottom: 0.5rem;
         }
 
-        .credential-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Impact Statement */
-        .impact {
-            background: var(--sage-dark);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .impact-text {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            font-weight: 400;
-            max-width: 800px;
+        /* ============================================
+           TEAM
+           ============================================ */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 880px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
-        .impact-text em {
-            font-style: italic;
-            color: rgba(255,255,255,0.85);
-        }
-
-        /* Podcast Section */
-        .podcast {
+        .team-card {
             text-align: center;
         }
 
-        .podcast-description {
-            font-size: 1.1rem;
+        .team-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--sage-lighter);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .team-card h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1.25rem;
+        }
+
+        .team-bio {
+            font-size: 0.9375rem;
             color: var(--text-light);
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+            text-align: left;
+        }
+
+        .team-credentials {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .credential-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--warm-white);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ============================================
+           PODCAST
+           ============================================ */
+        .podcast {
+            background: var(--white);
+        }
+
+        .podcast-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .podcast-info {
+            flex: 1;
+        }
+
+        .podcast-info h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .podcast-info p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
         }
 
         .podcast-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            gap: 0.75rem;
         }
 
         .podcast-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: white;
-            border: 1px solid var(--sage-light);
+            gap: 0.4rem;
+            padding: 0.6rem 1.25rem;
+            background: var(--cream);
+            border: 1px solid rgba(107, 123, 107, 0.1);
             border-radius: 8px;
             color: var(--text);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             font-weight: 400;
             transition: all 0.2s ease;
         }
 
         .podcast-link:hover {
-            background: var(--sage);
-            color: white;
-            border-color: var(--sage);
-            transform: translateY(-2px);
+            background: var(--sage-dark);
+            color: var(--white);
+            border-color: var(--sage-dark);
+            transform: translateY(-1px);
         }
 
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
-            text-align: center;
-            padding: 8rem 2rem;
+        .podcast-art {
+            flex-shrink: 0;
+            width: 280px;
+            height: 280px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-title {
+        .podcast-art::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .podcast-art-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .podcast-art-title {
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
         }
 
-        .cta-subtitle {
+        /* ============================================
+           FINAL CTA
+           ============================================ */
+        .final-cta {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .final-cta h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .final-cta p {
             font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+            font-weight: 300;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1.25rem 3rem;
-            background: var(--sage-dark);
-            color: white;
+        .final-cta .btn-primary {
+            margin-bottom: 1rem;
+        }
+
+        .final-cta .email-link {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9375rem;
+            color: var(--text-lighter);
+        }
+
+        .final-cta .email-link a {
+            color: var(--sage-dark);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.02em;
+            border-bottom: 1px solid rgba(74, 90, 74, 0.3);
+            transition: border-color 0.2s ease;
         }
 
-        .cta-button:hover {
-            background: var(--text);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(74, 90, 74, 0.2);
+        .final-cta .email-link a:hover {
+            border-color: var(--sage-dark);
         }
 
-        /* Footer */
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
-            text-align: center;
             padding: 3rem 2rem;
-            background: var(--cream);
-            border-top: 1px solid rgba(107, 123, 107, 0.1);
+            text-align: center;
+            border-top: 1px solid rgba(107, 123, 107, 0.08);
+        }
+
+        .footer-logo {
+            height: 36px;
+            margin-bottom: 1rem;
+            opacity: 0.6;
         }
 
         footer p {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.8125rem;
+            color: var(--text-lighter);
+            line-height: 1.6;
         }
 
         footer a {
@@ -303,120 +870,483 @@
             text-decoration: none;
         }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            .hero {
-                padding: 3rem 1.5rem;
-            }
+        /* ============================================
+           ANIMATIONS (scroll-triggered)
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
 
-            .logo {
-                max-width: 260px;
-            }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .credentials {
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .services-grid,
+            .process-steps,
+            .pricing-cards {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-4px);
+            }
+
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 248, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid rgba(107, 123, 107, 0.08);
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 5rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .section {
+                padding: 5rem 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .podcast-content {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+
+            .podcast-art {
+                width: 200px;
+                height: 200px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6rem 1.25rem 4rem;
+            }
+
+            .hero-logo {
+                max-width: 150px;
+            }
+
+            .section {
+                padding: 4rem 1.25rem;
+            }
+
+            .problem {
+                padding: 4rem 1.25rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero -->
-    <section class="hero">
-        <img src="logo.png" alt="Petaluma.ai — The Art and Science of AI" class="logo">
-        <p class="hero-tagline" style="font-style: normal;">
-            Skip the hype. Get results.
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="nav">
+        <a href="#top">
+            <img src="logo.png" alt="Petaluma AI" class="nav-logo">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">How We Work</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#podcast">Podcast</a></li>
+            <li><a href="#contact" class="nav-cta">Free AI Audit →</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="top">
+        <img src="logo.png" alt="Petaluma AI — The Art and Science of AI" class="hero-logo">
+        <h1>You don't have an AI problem.<br>You have an execution problem.</h1>
+        <p class="hero-sub">
+            We close the gap between "AI is cool" and "AI is saving us money." Production-grade AI systems for mid-market companies — built fast, tested rigorously, maintained reliably.
         </p>
-        <a href="#founder" class="scroll-indicator" style="margin-top: 2rem;">
+        <div class="hero-cta-group">
+            <a href="#contact" class="btn-primary">Book Your Free AI Audit →</a>
+            <span class="hero-note">Limited time — no strings attached</span>
+        </div>
+        <div class="scroll-hint">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
-        </a>
+        </div>
     </section>
 
-    <!-- Founder -->
-    <section class="founder" id="founder">
-        <div class="founder-content">
-            <p class="founder-intro">The expertise behind Petaluma</p>
-            <h1 class="founder-name">Nikhil Maddirala</h1>
-            <p class="founder-title">FOUNDER</p>
-            
-            <p class="founder-bio" style="font-size: 1.15rem; color: var(--text); max-width: 700px; margin: 0 auto 3rem; text-align: center; line-height: 1.8;">
-                I've spent years building AI products at Meta and Adobe — systems used by billions of people and millions of businesses. What I've learned: the same principles that work at massive scale work even better for smaller teams. You just need someone who knows where to focus.
+    <!-- ========== PROBLEM STATEMENT ========== -->
+    <div class="problem">
+        <div class="problem-inner reveal">
+            <p class="problem-quote">"Most companies know AI could help them. Few know where to start — and fewer still get past the pilot stage."</p>
+            <p class="problem-body">
+                You've tried ChatGPT. Maybe you did a hackathon. Perhaps a freelancer built something that broke after a month. You're stuck in Pilot Purgatory — lots of experiments, no P&L impact. That's the Execution Gap. We close it.
             </p>
+        </div>
+    </div>
 
-            <h2 class="section-title" style="margin-bottom: 2rem;">Education</h2>
-
-            <div class="credentials">
-                <div class="credential-card">
-                    <h3>Yale University</h3>
-                    <p class="degree">MBA</p>
-                    <p>Business strategy meets technology — understanding how AI creates real value for organizations.</p>
+    <!-- ========== SERVICES ========== -->
+    <section class="section" id="services">
+        <div class="section-inner">
+            <p class="section-label reveal">What We Do</p>
+            <h2 class="section-title reveal">We turn AI potential into business results.</h2>
+            <p class="section-subtitle reveal">
+                Petaluma AI is a boutique consultancy that builds production-ready AI systems for mid-market businesses. We don't sell strategy decks. We deliver working systems.
+            </p>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </div>
+                    <h3>AI Strategy &amp; Readiness</h3>
+                    <p>We audit your workflows, data, and systems to find the highest-impact opportunities for AI. You get a concrete assessment — not a generic slide deck.</p>
                 </div>
-
-                <div class="credential-card">
-                    <h3>University of Pennsylvania</h3>
-                    <p class="degree">MS, Computer & Information Technology</p>
-                    <p>The technical foundation — algorithms, systems, and the engineering behind modern AI.</p>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3>Production AI Systems</h3>
+                    <p>We design, build, and deploy AI agents that work in your existing tools — Slack, email, WhatsApp. The best interface is the one your team already has open.</p>
                 </div>
-
-                <div class="credential-card">
-                    <h3>University of Amsterdam</h3>
-                    <p class="degree">MS, Logic</p>
-                    <p>The mathematics of reasoning — formal logic is the bedrock of how AI systems think and decide.</p>
-                </div>
-
-                <div class="credential-card">
-                    <h3>University of Chicago</h3>
-                    <p class="degree">BA, Philosophy</p>
-                    <p>The art of clear thinking — philosophy trains you to ask the right questions before building solutions.</p>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182M2.985 19.644l3.181-3.183" />
+                        </svg>
+                    </div>
+                    <h3>Ongoing Optimization</h3>
+                    <p>AI isn't set-and-forget. Models evolve. Your business changes. We monitor, maintain, and improve your systems every month so they keep delivering value.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Podcast -->
-    <section class="podcast" id="podcast">
-        <h2 class="section-title">Podcast</h2>
-        <p class="podcast-description" style="font-size: 1.25rem; color: var(--text); font-weight: 500; margin-bottom: 0.5rem;">
-            Art and Science of AI
-        </p>
-        <p class="podcast-description">
-            Real talk about AI — what works, what doesn't, and what's coming next. No hype, no jargon, just insights from inside the industry.
-        </p>
-        <div class="podcast-links">
-            <a href="https://www.youtube.com/@ArtScience-AI" target="_blank" class="podcast-link">
-                YouTube
-            </a>
-            <a href="https://open.spotify.com/show/2Wkubbc0AqF5492i94uFj7" target="_blank" class="podcast-link">
-                Spotify
-            </a>
-            <a href="https://podcasts.apple.com/us/podcast/art-and-science-of-ai/id1748468279" target="_blank" class="podcast-link">
-                Apple Podcasts
-            </a>
-            <a href="https://artscienceai.substack.com/" target="_blank" class="podcast-link">
-                Newsletter
-            </a>
+    <!-- ========== HOW WE WORK ========== -->
+    <section class="section process" id="process">
+        <div class="section-inner">
+            <p class="section-label reveal">How We Work</p>
+            <h2 class="section-title reveal">Three steps. Zero guesswork.</h2>
+            <p class="section-subtitle reveal">
+                Every engagement follows the same proven path: understand, build, maintain.
+            </p>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">1</div>
+                    <h3>AI Readiness Audit</h3>
+                    <p>We study your workflows, systems, and data. Within two weeks, you get a clear-eyed assessment: where AI can help, what impact to expect, and exactly how we'd build it.</p>
+                    <div class="step-badge">Free for a limited time</div>
+                    <div class="step-price">$0</div>
+                    <div class="step-price-note">Typically $3,000</div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">2</div>
+                    <h3>Build &amp; Deploy</h3>
+                    <p>We build your AI skills — reusable playbooks that describe business procedures in a language AI understands. Integrate, validate, deploy. Typical timeline: 4–6 weeks.</p>
+                    <div class="step-price">$30,000</div>
+                    <div class="step-price-note">Fixed scope, flat fee</div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">3</div>
+                    <h3>Monitor &amp; Evolve</h3>
+                    <p>We don't disappear. We monitor performance, refine prompts, catch drift, and make improvements. Your AI gets better over time, not worse.</p>
+                    <div class="step-price">$3,000<span style="font-size: 0.875rem; font-weight: 400;">/mo</span></div>
+                    <div class="step-price-note">Cancel anytime</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
-        <h2 class="cta-title">Not sure where to start?</h2>
-        <p class="cta-subtitle">
-            Book a 30-minute call. No pitch — just clarity on where AI can (and can't) help your business.
-        </p>
-        <a href="mailto:contact@petaluma.ai" class="cta-button">
-            Book a Call →
-        </a>
+    <!-- ========== WHY US ========== -->
+    <section class="section" id="why">
+        <div class="section-inner">
+            <p class="section-label reveal">Why Petaluma AI</p>
+            <h2 class="section-title reveal">The Goldilocks zone for AI.</h2>
+            <p class="section-subtitle reveal">
+                Not a Big 4 consultancy that takes six months and $500K. Not a freelancer who disappears after the demo. We're the senior-led boutique that delivers production systems in weeks.
+            </p>
+            <div class="diff-grid">
+                <div class="diff-card reveal">
+                    <h3>We write playbooks, not custom code.</h3>
+                    <p>We design reusable AI skills — structured playbooks that encode your domain expertise. Build once, improve forever.</p>
+                    <span class="quote-line">"The models are commodities. The skills are the asset."</span>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>We're model-agnostic.</h3>
+                    <p>We use the best model for each job — OpenAI, Anthropic, Google — and can switch as the landscape evolves. Your skills work with all of them. No vendor lock-in.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>We build the agent that tests the agent.</h3>
+                    <p>Every system includes built-in validation. One AI does the work; a second checks it. Our reliability engineering is the difference between a demo and a production system.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>Your data stays yours.</h3>
+                    <p>We build the pipes; you own the water. Our "Clean Hands" architecture means data flows through our skills but never stays on our systems. Zero-retention. Zero risk.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>You work with the founders.</h3>
+                    <p>No junior analysts. No bloated timelines. No hand-offs to people you've never met. When you hire Petaluma AI, you work directly with the people who designed the system.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>We meet you where you are.</h3>
+                    <p>We deploy AI into the tools your team already uses — Slack, email, WhatsApp, Teams. No new dashboards. No new logins.</p>
+                    <span class="quote-line">"The best interface is the one your team already has open."</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========== PRICING ========== -->
+    <section class="section pricing" id="pricing">
+        <div class="section-inner">
+            <p class="section-label reveal">Pricing</p>
+            <h2 class="section-title reveal">Simple pricing. No surprises.</h2>
+            <p class="section-subtitle reveal">
+                Fixed fees, transparent scope, and a free starting point. If we can't deliver value, you shouldn't pay us.
+            </p>
+            <div class="pricing-cards">
+                <div class="pricing-card reveal">
+                    <div class="pricing-badge">Limited Time</div>
+                    <div class="pricing-phase">AI Readiness Audit</div>
+                    <div class="pricing-amount">Free</div>
+                    <div class="pricing-period">2-week assessment</div>
+                    <p class="pricing-desc">
+                        We study your workflows, data, and systems. You get a concrete assessment: where AI can help, what ROI to expect, and exactly how we'd build it.
+                    </p>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-phase">Build &amp; Deploy</div>
+                    <div class="pricing-amount">$30K</div>
+                    <div class="pricing-period">one-time, flat fee</div>
+                    <p class="pricing-desc">
+                        We design your AI skills, integrate with your systems, validate rigorously, and deploy to production. Fixed scope defined by the audit. 4–6 week delivery.
+                    </p>
+                </div>
+                <div class="pricing-card reveal">
+                    <div class="pricing-phase">Monthly Retainer</div>
+                    <div class="pricing-amount">$3K</div>
+                    <div class="pricing-period">per month, cancel anytime</div>
+                    <p class="pricing-desc">
+                        Monitoring, maintenance, prompt refinement, API updates, drift detection, and continuous improvements. Your AI gets smarter every month.
+                    </p>
+                </div>
+            </div>
+            <div class="pricing-footer reveal">
+                <p>
+                    <strong>What do you have to lose?</strong> We'll tell you if AI can help — and exactly how. The audit is free, the scope is fixed, and the retainer is month-to-month.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section class="section" id="team">
+        <div class="section-inner">
+            <p class="section-label reveal">Team</p>
+            <h2 class="section-title reveal">The people behind Petaluma.</h2>
+            <p class="section-subtitle reveal">
+                Senior operators who've built at scale — and know how to bring those same principles to your business.
+            </p>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-avatar" style="background: var(--sage);">PA</div>
+                    <h3>Piyush Agarwal</h3>
+                    <p class="team-role">Co-Founder · Business &amp; Strategy</p>
+                    <p class="team-bio">
+                        Ten years at Google, leading enterprise sales across some of the company's most complex accounts. Piyush brings deep expertise in how businesses actually adopt technology — not in theory, but in practice. He translates business problems into AI opportunities and ensures every engagement delivers measurable value.
+                    </p>
+                    <div class="team-credentials">
+                        <span class="credential-tag">Ex-Google (10 years)</span>
+                        <span class="credential-tag">Enterprise Sales</span>
+                        <span class="credential-tag">San Francisco Bay Area</span>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar" style="background: var(--sage-dark);">NM</div>
+                    <h3>Nikhil Maddirala</h3>
+                    <p class="team-role">Co-Founder · Architecture &amp; Engineering</p>
+                    <p class="team-bio">
+                        Years building AI products at Meta and Adobe — systems used by billions of people and millions of businesses. Nikhil combines rigorous technical depth with practical business sense. He designs the AI architectures, builds the skills, and engineers the reliability that makes production AI possible.
+                    </p>
+                    <div class="team-credentials">
+                        <span class="credential-tag">Ex-Meta</span>
+                        <span class="credential-tag">Ex-Adobe</span>
+                        <span class="credential-tag">Yale MBA</span>
+                        <span class="credential-tag">UPenn MS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PODCAST ========== -->
+    <section class="section podcast" id="podcast">
+        <div class="section-inner">
+            <div class="podcast-content reveal">
+                <div class="podcast-info">
+                    <p class="section-label" style="text-align: left;">Podcast</p>
+                    <h3>The Art and Science of AI</h3>
+                    <p>Real talk about AI — what works, what doesn't, and what's coming next. No hype, no jargon, just insights from the people building it.</p>
+                    <div class="podcast-links">
+                        <a href="https://www.youtube.com/@ArtScience-AI" target="_blank" rel="noopener" class="podcast-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            YouTube
+                        </a>
+                        <a href="https://open.spotify.com/show/2Wkubbc0AqF5492i94uFj7" target="_blank" rel="noopener" class="podcast-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                            Spotify
+                        </a>
+                        <a href="https://podcasts.apple.com/us/podcast/art-and-science-of-ai/id1748468279" target="_blank" rel="noopener" class="podcast-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.12 1.2-.72 1.32s-1.2-.12-1.32-.72c-.264-1.344-.792-2.424-1.68-3.336-1.272-1.344-2.928-2.04-4.8-2.04-1.752 0-3.336.624-4.608 1.848-1.344 1.344-2.04 3-2.04 4.848 0 1.464.432 2.784 1.296 3.912.864 1.128 2.04 1.92 3.408 2.28.6.12 1.08.72.96 1.32-.12.6-.72 1.08-1.32.96-1.8-.48-3.384-1.536-4.536-3.024C3.36 14.832 2.76 13.08 2.76 11.16c0-2.424.864-4.56 2.568-6.264C7.08 3.192 9.12 2.568 11.865 2.568zM12 7.128c1.32 0 2.52.504 3.408 1.392.888.888 1.392 2.088 1.392 3.408 0 .96-.264 1.824-.72 2.568-.456.744-1.08 1.32-1.824 1.68v4.584c0 1.32-1.08 2.4-2.4 2.4-1.32 0-2.4-1.08-2.4-2.4v-4.344c-.816-.36-1.488-.96-1.968-1.752A4.718 4.718 0 017.2 11.928c0-1.32.504-2.52 1.392-3.408A4.786 4.786 0 0112 7.128zm0 2.448a2.34 2.34 0 00-2.352 2.352A2.34 2.34 0 0012 14.28a2.34 2.34 0 002.352-2.352A2.34 2.34 0 0012 9.576z"/></svg>
+                            Apple
+                        </a>
+                        <a href="https://artscienceai.substack.com/" target="_blank" rel="noopener" class="podcast-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                            Newsletter
+                        </a>
+                    </div>
+                </div>
+                <div class="podcast-art">
+                    <svg class="podcast-art-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                    </svg>
+                    <p class="podcast-art-title">The Art &amp; Science<br>of AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final-cta" id="contact">
+        <div class="reveal">
+            <h2>Ready to close the Execution Gap?</h2>
+            <p>
+                Book a free AI Readiness Audit. We'll study your workflows and tell you exactly where AI can save you time and money. No commitment. No sales pitch. Just clarity.
+            </p>
+            <a href="mailto:contact@petaluma.ai?subject=AI%20Readiness%20Audit%20Request" class="btn-primary">Book Your Free Audit →</a>
+            <span class="email-link">Or email us directly at <a href="mailto:contact@petaluma.ai">contact@petaluma.ai</a></span>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
     <footer>
-        <p>© 2026 Petaluma.ai — The Art and Science of AI</p>
+        <img src="logo.png" alt="Petaluma AI" class="footer-logo">
+        <p>© 2026 Petaluma AI · The Art and Science of AI</p>
+        <p style="margin-top: 0.25rem;">San Francisco Bay Area · <a href="mailto:contact@petaluma.ai">contact@petaluma.ai</a></p>
     </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        // Scroll-triggered nav styling
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Scroll-triggered reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links (backup for browsers without CSS smooth scroll)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
