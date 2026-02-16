@@ -60,7 +60,13 @@ Once live, we don't disappear. Monitoring, maintenance, updates, and continuous 
 
 ---
 
-## 4. WHY PETALUMA AI
+## 4. TEAM
+
+**Section headline:** The people behind Petaluma.
+
+---
+
+## 5. WHY PETALUMA AI
 
 **Section headline:** Why Petaluma AI
 
@@ -75,12 +81,6 @@ No junior analysts. No hand-offs. You work directly with the people who designed
 
 ### We're practitioners, not advisors.
 We use AI to run our own operations. That's the difference between advice and experience.
-
----
-
-## 5. TEAM
-
-**Section headline:** The people behind Petaluma.
 
 ### Nikhil Maddirala
 **Co-Founder · Architecture & Engineering**
